@@ -28,7 +28,7 @@ public class NovaListaDAO {
         List<NovaLista> lista = new ArrayList<>();
         Banco banco = new Banco(context);
         SQLiteDatabase db = banco.getReadableDatabase();
-        String sql = "SELECT * FROM anotacoes ORDER BY id DESC ";
+        String sql = "SELECT * FROM ListaDeCompra ORDER BY id DESC ";
         Cursor cursor = db.rawQuery(sql, null);
         if ( cursor.getCount() > 0 ){
             cursor.moveToFirst();
