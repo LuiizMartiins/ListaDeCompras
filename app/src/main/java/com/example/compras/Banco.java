@@ -15,9 +15,9 @@ public class Banco extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS ListaDeCompra ( " +
-                "  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT , " +
-                "  titulo TEXT )");
+        db.execSQL("CREATE TABLE IF NOT EXISTS ListaDeCompra ( idLista INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, titulo TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS ListaDeProdutos ( idProduto INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                "idLista_FK INTEGER, nomeProduto TEXT, qtdProduto INTEGER, valorProduto REAL, FOREIGN KEY(idListaFK) references ListaDeCompra(idLista) )");
 
 
     }

@@ -11,10 +11,10 @@ import java.util.List;
 public class AdapterTituloLista extends BaseAdapter {
 
     private Context context;
-    private List<NovaLista> lista;
+    private List<Lista> lista;
     private LayoutInflater inflater;
 
-    public AdapterTituloLista(Context context, List<NovaLista> lista) {
+    public AdapterTituloLista(Context context, List<Lista> lista) {
         this.context = context;
         this.lista = lista;
         this.inflater = LayoutInflater.from(context);
@@ -53,7 +53,7 @@ public class AdapterTituloLista extends BaseAdapter {
             item = (Suporte) convertView.getTag();
         }
 
-        NovaLista Titulo = lista.get(position);
+        Lista Titulo = lista.get(position);
         item.tvIdTitulo.setText(String.valueOf(Titulo.getId()));
         item.tvTitulo.setText(Titulo.getTitulo());
 

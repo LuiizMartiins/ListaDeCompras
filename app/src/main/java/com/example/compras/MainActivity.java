@@ -4,13 +4,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.AdapterView;
 import java.util.List;
@@ -18,7 +15,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     ListView lvLista;
-    List<NovaLista> lista;
+    List<Lista> lista;
     AdapterTituloLista adapter;
 
 
@@ -36,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(MainActivity.this, AddLista.class);
+                Intent in = new Intent(MainActivity.this, ViewAddList.class);
                 startActivity(in);
             }
 
@@ -46,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
-                final NovaLista listaSelecionada = lista.get(position);
+                final Lista listaSelecionada = lista.get(position);
                 AlertDialog.Builder alerta =
                         new AlertDialog.Builder(MainActivity.this);
                 alerta.setTitle("Excluir Lista...");
@@ -55,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        NovaListaDAO.excluir(listaSelecionada.getId(),
+                        ListaDAO.excluir(listaSelecionada.getId(),
                                 MainActivity.this);
 
                         lista.remove( position);
@@ -76,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void carregarLista(){
 
-        lista = NovaListaDAO.listar(this);
+        lista = ListaDAO.listar(this);
         adapter = new AdapterTituloLista(this, lista);
         lvLista.setAdapter(adapter);
     }

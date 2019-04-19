@@ -1,6 +1,6 @@
 package com.example.compras;
 
-public class NovaLista {
+public class Lista {
 
     private int id;
     private String titulo;

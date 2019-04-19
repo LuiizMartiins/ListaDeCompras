@@ -1,13 +1,12 @@
 package com.example.compras;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class AddLista extends AppCompatActivity {
+public class ViewAddList extends AppCompatActivity {
 
     private EditText edtTitulo;
     private Button btnSalvar;
@@ -16,7 +15,7 @@ public class AddLista extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_lista);
+        setContentView(R.layout.activity_ViewAddLista);
 
         edtTitulo = (EditText)findViewById(R.id.edtTitulo);
         btnSalvar = (Button)findViewById(R.id.btnSalvar);
@@ -29,9 +28,9 @@ public class AddLista extends AppCompatActivity {
         });
     }
     private void salvar(){
-        NovaLista compra = new NovaLista();
+        Lista compra = new Lista();
         compra.setTitulo( edtTitulo.getText().toString() );
-        NovaListaDAO.inserir(compra, this);
+        ListaDAO.inserir(compra, this);
         this.finish();
 
     }
