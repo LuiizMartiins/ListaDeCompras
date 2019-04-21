@@ -2,4 +2,6 @@
     <string name="app_name">Lista de Compras</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_lista">Adicionar Lista</string>
+    <string name="title_activity_cadastro_produto">CadastroProduto</string>
+    <string name="title_activity_lista_produto">ListaProduto</string>
 </resources>
