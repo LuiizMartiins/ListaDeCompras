@@ -10,12 +10,13 @@ import java.util.List;
 
 public class ProdutoDAO {
 
-    public static final void inserir(Produto item, Context context) {
+    public static final void inserir(Produto item,int idLista, Context context) {
         Banco banco = new Banco(context);
         ContentValues valores = new ContentValues();
         valores.put("nomeProduto", item.getNomeProduto());
         valores.put("qtdProduto", item.getQtdProduto());
         valores.put("valorProduto", item.getValor());
+        valores.put("idListaFK", idLista);
         SQLiteDatabase db = banco.getWritableDatabase();
         db.insert("ListaDeProdutos", null, valores);
     }
@@ -26,21 +27,22 @@ public class ProdutoDAO {
         db.delete("ListaDeProdutos", "id = " + idProduto, null);
     }
 
-    public static final List<Produto> listar(Context context) {
+    public static final List<Produto> listar(Context context, int idLista) {
         List<Produto> listaProdutos = new ArrayList<>();
         Banco banco = new Banco(context);
         SQLiteDatabase db = banco.getReadableDatabase();
-        String sql = "SELECT * FROM ListaDeProduto ORDER BY id DESC ";
+
+        String sql = "SELECT * FROM ListaDeProdutos WHERE idListaFK = " + idLista;
         Cursor cursor = db.rawQuery(sql, null);
+
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-
                 Produto item = new Produto();
                 item.setIdProduto(cursor.getInt(0));
-                item.setNomeProduto(cursor.getString(1));
-                item.setQtdProduto(cursor.getInt(2));
-                item.setValor(cursor.getDouble(3));
+                item.setNomeProduto(cursor.getString(2));
+                item.setQtdProduto(cursor.getInt(3));
+                item.setValor(cursor.getDouble(4));
                 listaProdutos.add(item);
 
             } while (cursor.moveToNext());

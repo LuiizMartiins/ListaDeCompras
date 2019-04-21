@@ -5,7 +5,7 @@ public class Produto {
     private int    idProduto;
     private String nomeProduto;
     private int    qtdProduto;
-    private double valor;
+    private double valorProduto;
 
     public Produto() {
     }
@@ -21,18 +21,18 @@ public class Produto {
 
     public Produto(String nomeProduto, double valor) {
         this.nomeProduto = nomeProduto;
-        this.valor = valor;
+        this.valorProduto = valor;
     }
 
     public Produto(int qtdProduto, double valor) {
         this.qtdProduto = qtdProduto;
-        this.valor = valor;
+        this.valorProduto = valor;
     }
 
     public Produto(String nomeProduto, int qtdProduto, double valor) {
         this.nomeProduto = nomeProduto;
         this.qtdProduto = qtdProduto;
-        this.valor = valor;
+        this.valorProduto = valor;
     }
 
     public int getIdProduto() {
@@ -60,10 +60,10 @@ public class Produto {
     }
 
     public double getValor() {
-        return valor;
+        return valorProduto;
     }
 
     public void setValor(double valor) {
-        this.valor = valor;
+        this.valorProduto = valor;
     }
 }
