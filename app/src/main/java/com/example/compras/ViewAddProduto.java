@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Objects;
+
 public class ViewAddProduto extends AppCompatActivity {
 
     private EditText edtNomeProduto;
@@ -35,7 +37,7 @@ public class ViewAddProduto extends AppCompatActivity {
     public void salvar(){
         Produto p = new Produto();
         p.setNomeProduto( edtNomeProduto.getText().toString() );
-        ProdutoDAO.inserir( p, getIntent().getExtras().getInt("idLista2"), this );
+        ProdutoDAO.inserir( p, Objects.requireNonNull(getIntent().getExtras()).getInt("idLista2"), this );
         this.finish();
     }
 }
