@@ -37,7 +37,9 @@ public class ViewAddProduto extends AppCompatActivity {
     public void salvar(){
         Produto p = new Produto();
         p.setNomeProduto( edtNomeProduto.getText().toString() );
-        ProdutoDAO.inserir( p, Objects.requireNonNull(getIntent().getExtras()).getInt("idLista2"), this );
+        p.setQtdProduto(Integer.parseInt(edtQntdProduto.getText().toString()));
+        p.setValor(Double.parseDouble(edtValorProduto.getText().toString()));
+        ProdutoDAO.inserir( p, getIntent().getExtras().getInt("idLista2"), this );
         this.finish();
     }
 }

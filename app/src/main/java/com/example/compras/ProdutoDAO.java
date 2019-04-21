@@ -10,13 +10,14 @@ import java.util.List;
 
 public class ProdutoDAO {
 
-    public static final void inserir(Produto item,int idLista, Context context) {
+    public static final void inserir(Produto item, int idLista, Context context) {
         Banco banco = new Banco(context);
         ContentValues valores = new ContentValues();
         valores.put("nomeProduto", item.getNomeProduto());
         valores.put("qtdProduto", item.getQtdProduto());
         valores.put("valorProduto", item.getValor());
         valores.put("idListaFK", idLista);
+        System.out.println("Numero sendo inseridos no banco: Nome:" + item.getNomeProduto() + " - Qtd:" + item.getQtdProduto() + "- Valor:" + item.getValor() + " - idLista:"+ idLista);
         SQLiteDatabase db = banco.getWritableDatabase();
         db.insert("ListaDeProdutos", null, valores);
     }
@@ -43,10 +44,12 @@ public class ProdutoDAO {
                 item.setNomeProduto(cursor.getString(2));
                 item.setQtdProduto(cursor.getInt(3));
                 item.setValor(cursor.getDouble(4));
+                System.out.println("DAO: Retornando o resultado do SELECT - a lista de produtos - Resultado:" + cursor.getInt(0)+ cursor.getInt(1)  +cursor.getInt(2) + cursor.getInt(3) + cursor.getInt(4));
                 listaProdutos.add(item);
 
             } while (cursor.moveToNext());
         }
+
         return listaProdutos;
     }
 

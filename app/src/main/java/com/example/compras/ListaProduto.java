@@ -78,15 +78,18 @@ public class ListaProduto extends AppCompatActivity {
     }
 
     private void carregarProdutoPorLista() {
+        System.out.println("Inicio de Listar Produtos");
         produtos = ProdutoDAO.listar(this, getIntent().getExtras().getInt("idLista1"));
         adapter = new AdapterListaProduto(this, produtos);
         lvListaProduto.setAdapter(adapter);
+        System.out.println("Termino de Listar Produtos");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         carregarProdutoPorLista();
+        System.out.println("Executou o OnResume");
     }
 
 
