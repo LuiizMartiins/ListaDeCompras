@@ -15,7 +15,7 @@ public class ViewAddList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ViewAddLista);
+        setContentView(R.layout.activity_view_add_lista);
 
         edtTitulo = (EditText)findViewById(R.id.edtTitulo);
         btnSalvar = (Button)findViewById(R.id.btnSalvar);

@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class CadastroProduto extends AppCompatActivity {
+public class ViewAddProduto extends AppCompatActivity {
 
     private EditText edtNomeProduto;
     private EditText edtQntdProduto;
