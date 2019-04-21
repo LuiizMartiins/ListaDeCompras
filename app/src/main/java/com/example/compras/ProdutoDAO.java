@@ -17,7 +17,6 @@ public class ProdutoDAO {
         valores.put("qtdProduto", item.getQtdProduto());
         valores.put("valorProduto", item.getValor());
         valores.put("idListaFK", idLista);
-        System.out.println("Numero sendo inseridos no banco: Nome:" + item.getNomeProduto() + " - Qtd:" + item.getQtdProduto() + "- Valor:" + item.getValor() + " - idLista:"+ idLista);
         SQLiteDatabase db = banco.getWritableDatabase();
         db.insert("ListaDeProdutos", null, valores);
     }
@@ -25,7 +24,7 @@ public class ProdutoDAO {
     public static final void excluir(int idProduto, Context context) {
         Banco banco = new Banco(context);
         SQLiteDatabase db = banco.getWritableDatabase();
-        db.delete("ListaDeProdutos", "id = " + idProduto, null);
+        db.delete("ListaDeProdutos", "idProduto = " + idProduto, null);
     }
 
     public static final List<Produto> listar(Context context, int idLista) {
@@ -44,7 +43,29 @@ public class ProdutoDAO {
                 item.setNomeProduto(cursor.getString(2));
                 item.setQtdProduto(cursor.getInt(3));
                 item.setValor(cursor.getDouble(4));
-                System.out.println("DAO: Retornando o resultado do SELECT - a lista de produtos - Resultado:" + cursor.getInt(0)+ cursor.getInt(1)  +cursor.getInt(2) + cursor.getInt(3) + cursor.getInt(4));
+                listaProdutos.add(item);
+
+            } while (cursor.moveToNext());
+        }
+
+        return listaProdutos;
+    } public static final List<Produto> listarTudo(Context context) {
+        List<Produto> listaProdutos = new ArrayList<>();
+        Banco banco = new Banco(context);
+        SQLiteDatabase db = banco.getReadableDatabase();
+
+        String sql = "SELECT * FROM ListaDeProdutos";
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                Produto item = new Produto();
+                item.setIdProduto(cursor.getInt(0));
+                item.setNomeProduto(cursor.getString(2));
+                item.setQtdProduto(cursor.getInt(3));
+                item.setValor(cursor.getDouble(4));
+                System.out.println("DAO: TODOS PRODUTOS - " + " IDITEM:" + cursor.getInt(0) + " IDLISTA:" + cursor.getInt(1) + " NOME:" + cursor.getString(2) + " QTD:" + cursor.getInt(3) + " PRECO:" + cursor.getDouble(4));
                 listaProdutos.add(item);
 
             } while (cursor.moveToNext());

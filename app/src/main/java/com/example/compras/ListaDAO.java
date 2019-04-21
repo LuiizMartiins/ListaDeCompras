@@ -18,10 +18,11 @@ public class ListaDAO {
         db.insert("ListaDeCompra", null, valores);
     }
 
-    public static final void excluir(int idCompra, Context context){
+    public static final void excluir(int idLista, Context context){
         Banco banco = new Banco(context);
         SQLiteDatabase db = banco.getWritableDatabase();
-        db.delete("ListaDeCompra", "id = "+idCompra, null);
+        db.delete("ListaDeCompra", "idLista = "+idLista, null);
+        db.delete("ListaDeProdutos", "idListaFK = "+idLista, null);
     }
 
     public static final List<Lista> listar(Context context){
