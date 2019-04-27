@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ddd"
+    android:background="#FFFFFF"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -17,23 +17,44 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Produto Tal"
-            android:textSize="24sp" />
+            android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/tvQuantidaeProduto"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Quantidade: X"
-            android:textSize="12dp" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
 
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Quantidade: "
+                android:textSize="12dp"/>
+
+            <TextView
+                android:id="@+id/tvQuantidaeProduto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" XX"
+                android:textSize="12dp" />
+        </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:text="Preço:" />
 
     <TextView
         android:id="@+id/tvPrecoProduto"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="0,00"
         android:gravity="center"
         android:padding="10dp"
-        android:textSize="25dp"/>
+        android:text="0,00"
+        android:textSize="25dp" />
 </LinearLayout>

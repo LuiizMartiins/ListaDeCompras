@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         lvLista = (ListView) findViewById(R.id.lvTituloLista);
 
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +66,17 @@ public class MainActivity extends AppCompatActivity {
 
 
                 return true;
+            }
+        });
+
+        lvLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final Lista listaSelecionada = lista.get(position);
+                Intent in = new Intent(MainActivity.this, ListaProduto.class);
+                in.putExtra("idLista1",listaSelecionada.getId());
+                //in.putExtra("nomeLista",listaSelecionada.getTitulo());
+                startActivity(in);
             }
         });
     }

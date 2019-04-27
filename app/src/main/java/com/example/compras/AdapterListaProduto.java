@@ -58,8 +58,8 @@ public class AdapterListaProduto extends BaseAdapter {
         Produto prod = produtos.get(position);
         //item.tvIdProduto.setText(String.valueOf(prod.getId()));
         item.tvNomeProduto.setText(prod.getNomeProduto());
-        item.tvValorProduto.setText((int) prod.getValor());
-        item.tvQtdProduto.setText(prod.getQtdProduto());
+        item.tvValorProduto.setText(String.valueOf(prod.getValor()));
+        item.tvQtdProduto.setText(String.valueOf(prod.getQtdProduto()));
 
 
         return convertView;
