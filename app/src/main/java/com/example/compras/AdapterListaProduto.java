@@ -49,6 +49,7 @@ public class AdapterListaProduto extends BaseAdapter {
             item.tvNomeProduto = (TextView) convertView.findViewById(R.id.tvIdNomeProduto);
             item.tvQtdProduto = (TextView) convertView.findViewById(R.id.tvQuantidaeProduto);
             item.tvValorProduto = (TextView) convertView.findViewById(R.id.tvPrecoProduto);
+            item.tvIdProduto= (TextView) convertView.findViewById(R.id.tvIdProduto);
             convertView.setTag(item);
 
         } else {
@@ -56,7 +57,7 @@ public class AdapterListaProduto extends BaseAdapter {
         }
 
         Produto prod = produtos.get(position);
-        //item.tvIdProduto.setText(String.valueOf(prod.getId()));
+        item.tvIdProduto.setText(String.valueOf(prod.getIdProduto()));
         item.tvNomeProduto.setText(prod.getNomeProduto());
         item.tvValorProduto.setText(String.valueOf(prod.getValor()));
         item.tvQtdProduto.setText(String.valueOf(prod.getQtdProduto()));
@@ -66,7 +67,7 @@ public class AdapterListaProduto extends BaseAdapter {
     }
 
     private class Suporte {
-        TextView tvNomeProduto, tvQtdProduto, tvValorProduto;
+        TextView tvNomeProduto, tvQtdProduto, tvValorProduto, tvIdProduto;
     }
 
 }
